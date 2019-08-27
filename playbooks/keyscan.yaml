@@ -1,0 +1,29 @@
+#
+# Update the user's ~/ssh/known_hosts file with the SSH keys from all
+# of the hosts in the Inventory.
+#
+# This is based around ssh-keyscan(1) which must be available locally.
+# It merges in keys discovered for any of the inventory hosts,
+# identified by hostname and IP number.  As you might expect, this
+# does not require any ssh login to inventory hosts.
+#
+# Requires: dnspython module
+#   pip3 install dnspython
+#     - or -
+#   pkg install py37-dnspython
+#
+# Caveats:
+# * This is incompatible with the HashKnownHosts ssh_config(5) setting (but
+#   see the '-F hostname' and '-H' options to ssh-keygen(1))
+# * Doesn't work for hosts accessed via a Proxy or jumpbox -- only what
+#   can be connected to directly
+
+- hosts: all
+  name: Add inventory hosts to the known_hosts file
+  gather_facts: no
+  roles:
+    - keyscan
+
+#
+# That's All Folks!
+#
