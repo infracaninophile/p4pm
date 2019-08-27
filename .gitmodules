@@ -1,3 +1,6 @@
 [submodule "roles/sysrc"]
 	path = roles/sysrc
 	url = https://github.com/infracaninophile/ansible-freebsd-modules.git
+[submodule "roles/keyscan"]
+	path = roles/keyscan
+	url = https://github.com/infracaninophile/ansible-role-keyscan.git
