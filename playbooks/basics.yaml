@@ -8,8 +8,5 @@
    become: yes
    roles:
      - basics
-#     - role: pam_sudo
-#       vars: 
-#         users: '{{ basics_users }}'
 
 ...

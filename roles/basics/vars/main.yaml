@@ -1,6 +1,9 @@
 ---
+
 basics_initial_pkgs:
   - python
   - sudo
+  - pam_ssh_agent_auth
+  - ca_root_nss
 
 ...

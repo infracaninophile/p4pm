@@ -8,6 +8,14 @@
 basics_initial_become_method: su
 basics_initial_become_flags: ''
 
+basics_visudo: /usr/local/sbin/visudo
+
+basics_sudoers_d_wheel: /usr/local/etc/sudoers.d/wheel
+
+basics_pamd_sudo: /usr/local/etc/pam.d/sudo
+
+basics_sudo_authorized_keys: /etc/security/sudo_authorized_keys
+
 basics_users: []
 
 ...

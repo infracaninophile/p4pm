@@ -1,34 +1,39 @@
 ---
 
+- name: Override the default become method
+  set_fact:
+    ansible_become_method: '{{ basics_initial_become_method }}'
+    ansible_become_flags: '{{ basics_initial_become_flags }}'
+
 - name: Bootstrap pkg(8) using raw mode
   raw: /usr/sbin/pkg bootstrap
   changed_when: false
-  become_method: '{{ basics_initial_become_method }}'
-  become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Install the initial packages using raw mode
   raw: pkg install -y {{ basics_initial_pkgs|join(' ') }}
   changed_when: false
-  become_method: '{{ basics_initial_become_method }}'
-  become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Configure sudo(8) to allow members of group wheel
   copy:
     src: sudo-wheel
-    dest: /usr/local/etc/sudoers.d/sudo-wheel
-    mode: '0440'
+    dest: '{{ basics_sudoers_d_wheel }}'
+    mode: 0440
     owner: root
     group: wheel
-    validate: visudo -cf %s
-  become_method: '{{ basics_initial_become_method }}'
-  become_flags: '{{ basics_initial_become_flags }}'
+    validate: '{{ basics_visudo }} -cf %s'
+
+- name: Configure pam_ssh_agent_auth(8) for sudo authentication
+  template:
+    src: sudo.pam.j2
+    dest: '{{ basics_pamd_sudo }}'
+    mode: 0644
+    owner: root
+    group: wheel
 
 - name: Create groups for local users
   group:
     name: '{{ item.group }}'
   loop: '{{ basics_users }}'
-  become_method: '{{ basics_initial_become_method }}'
-  become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Create local users
   user:
@@ -38,12 +43,10 @@
     group: '{{ item.group|default(item.user) }}'
     groups: '{{ item.other_groups|default([]) }}'
     password: '{{ item.password|default("*") }}'
-    update_password: on_create
+    update_password: '{{ item.update_password|default(false)|ternary("always", "on_create") }}'
     create_home: yes
     move_home: yes
   loop: '{{ basics_users }}'
-  become_method: '{{ basics_initial_become_method }}'
-  become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Manage authorized_keys for users
   authorized_key:
@@ -52,16 +55,19 @@
   with_subelements:
     - '{{ basics_users }}'
     - ssh_pub_keys
-  become_method: '{{ basics_initial_become_method }}'
-  become_flags: '{{ basics_initial_become_flags }}'
 
-# Since we're now switching to using sudo(1) we need to change to
-# supplying the user's login password to sudo, not the root password
-# as given by --ask-become-pass.  Since facts are global, this will
-# update any subsequent roles or tasks in this play.
-
-- name: Switch to using sudo
-  set_fact:
-    ansible_become_pass: '{{ ansible_ssh_pass }}'
+- name: Add users keys to {{ basics_sudo_authorized_keys }}
+  lineinfile:
+    path: '{{ basics_sudo_authorized_keys }}'
+    create: yes
+    owner: root
+    group: wheel
+    mode: 0644
+    state: present
+    line: '{{ item.1 }}'
+  with_subelements:
+    - '{{ basics_users }}'
+    - ssh_pub_keys
+  when: item.0.auth_sudo | default(false)
 
 ...

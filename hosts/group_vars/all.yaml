@@ -14,5 +14,6 @@ basics_users:
     ssh_pub_keys:
       - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILGZltCKvFNlSyE7O1HMGY0KZGMxImdRC8KLxqL0Jmhw matthew@lucid-nonsense.infracaninophile.co.uk'
       - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAR6DC2oyHLBqkZ9+lUu1K0h16pDSG54fr1jVBJZ7/Ja matthew@freebsd.org'
-
+    update_password: true
+    auth_sudo: true
 ...
