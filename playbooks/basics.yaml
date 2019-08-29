@@ -3,7 +3,7 @@
 # good citizen of the ansible ecosphere.  Install python and sudo, add
 # local users with SSH key based access
 
- - hosts: all
+ - hosts: freebsd-12-zfs
    gather_facts: no
    become: yes
    roles:
