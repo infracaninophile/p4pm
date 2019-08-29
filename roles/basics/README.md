@@ -30,7 +30,14 @@ ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o ForwardAgent=yes
 Requirements
 ------------
 
-No additional software is required on the ansible host.
+In order to use passwords with SSH, the sshpass(1) program needs to be
+installed on the ansible host.  This is available in ports --
+`security/sshpass` or it can be compiled from sorce, available from
+
+  https://sourceforge.net/projects/sshpass/files/latest/download
+
+`sshpass` is only needed until SSH key-based authentication has been set
+up, which is done by this role.
 
 On the ansible clients, this module assumes that:
 
