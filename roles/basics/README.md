@@ -99,7 +99,7 @@ Installation path for sudoers configuration snippet permitting members
 of group wheel to run any commands via sudo.
 
 ```
-basics_sudo_pam: /usr/local/etc/pam.d/sudo
+basics_pamd_sudo: /usr/local/etc/pam.d/sudo
 ```
 
 Installation path for a pam configuration snippet that adds
