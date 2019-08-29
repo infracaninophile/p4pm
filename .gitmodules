@@ -4,3 +4,6 @@
 [submodule "roles/keyscan"]
 	path = roles/keyscan
 	url = https://github.com/infracaninophile/ansible-role-keyscan.git
+[submodule "roles/poudriere"]
+	path = roles/poudriere
+	url = https://github.com/infracaninophile/ansible-freebsd-poudriere.git
