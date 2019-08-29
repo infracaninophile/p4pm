@@ -85,7 +85,7 @@ YAML dict with the following fields:
 ```
 basics_users:
   - user: matthew
-    comment: "Matthew Seaman"
+    comment: Matthew Seaman
     shell: /bin/tcsh
     group: matthew
     other_groups:
