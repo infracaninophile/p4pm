@@ -12,10 +12,23 @@
   become_method: '{{ basics_initial_become_method }}'
   become_flags: '{{ basics_initial_become_flags }}'
 
+- name: Configure sudo(8) to allow members of group wheel
+  copy:
+    src: sudo-wheel
+    dest: /usr/local/etc/sudoers.d/sudo-wheel
+    mode: '0440'
+    owner: root
+    group: wheel
+    validate: visudo -cf %s
+  become_method: '{{ basics_initial_become_method }}'
+  become_flags: '{{ basics_initial_become_flags }}'
+
 - name: Create groups for local users
   group:
     name: '{{ item.group }}'
   loop: '{{ basics_users }}'
+  become_method: '{{ basics_initial_become_method }}'
+  become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Create local users
   user:
@@ -29,6 +42,8 @@
     create_home: yes
     move_home: yes
   loop: '{{ basics_users }}'
+  become_method: '{{ basics_initial_become_method }}'
+  become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Manage authorized_keys for users
   authorized_key:
@@ -37,5 +52,16 @@
   with_subelements:
     - '{{ basics_users }}'
     - ssh_pub_keys
+  become_method: '{{ basics_initial_become_method }}'
+  become_flags: '{{ basics_initial_become_flags }}'
+
+# Since we're now switching to using sudo(1) we need to change to
+# supplying the user's login password to sudo, not the root password
+# as given by --ask-become-pass.  Since facts are global, this will
+# update any subsequent roles or tasks in this play.
+
+- name: Switch to using sudo 
+  set_fact:
+    ansible_become_pass: '{{ ansible_ssh_pass }}'
 
 ...
