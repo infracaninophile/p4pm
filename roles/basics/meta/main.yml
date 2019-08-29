@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Matthew Seaman
+  description: Basic post-install setup for FreeBSD
+  license: BSD
+  min_ansible_version: 2.4
+  platforms:
+    - name: FreeBSD
+      versions:
+      - all
+  galaxy_tags:
+    - freebsd
+dependencies: []
+...

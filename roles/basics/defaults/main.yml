@@ -1,0 +1,13 @@
+---
+
+# Default settings assume we're configuring the result of the standard
+# installation media.  These are used for the two initial steps of
+# bootstrapping pkg(8) and installing python and sudo, which will
+# enable the more usual ansible behaviour.
+
+basics_initial_become_method: su
+basics_initial_become_flags: ''
+
+basics_users: []
+
+...

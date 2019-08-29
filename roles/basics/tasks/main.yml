@@ -1,0 +1,41 @@
+---
+
+- name: Bootstrap pkg(8) using raw mode
+  raw: /usr/sbin/pkg bootstrap
+  changed_when: false
+  become_method: '{{ basics_intial_become_method }}'
+  become_flags: '{{ basics_initial_become_flags }}'
+
+- name: Install the initial packages using raw mode
+  raw: pkg install {{ basics_intial_pkgs|quote|join(' ') }}
+  changed_when: false
+  become_method: '{{ basics_intial_become_method }}'
+  become_flags: '{{ basics_initial_become_flags }}'
+
+- name: Create groups for local users
+  group:
+    name: '{{ item.group }}'
+  loop: '{{ basics_users }}'
+
+- name: Create local users
+  user:
+    name: '{{ item.user }}'
+    comment: '{{ item.comment|default(omit) }}'
+    shell: '{{ item.shell|default(omit) }}'
+    group: '{{ item.group|default(item.user) }}'
+    groups: '{{ item.other_groups|default([]) }}'
+    password: '{{ item.password|default("*") }}'
+    update_password: on_create
+    create_home: yes
+    move_home: yes
+  loop: '{{ basics_users }}'
+
+- name: Manage authorized_keys for users
+  authorized_key:
+    user: '{{ item.0.user }}'
+    key: '{{ item.1 }}'
+  with_subelements:
+    - '{{ basics_users }}'
+    - ssh_pub_keys
+
+...
