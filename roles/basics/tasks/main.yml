@@ -7,7 +7,7 @@
   become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Install the initial packages using raw mode
-  raw: pkg install {{ basics_initial_pkgs|quote|join(' ') }}
+  raw: pkg install -y {{ basics_initial_pkgs|join(' ') }}
   changed_when: false
   become_method: '{{ basics_initial_become_method }}'
   become_flags: '{{ basics_initial_become_flags }}'
