@@ -60,7 +60,7 @@
 # as given by --ask-become-pass.  Since facts are global, this will
 # update any subsequent roles or tasks in this play.
 
-- name: Switch to using sudo 
+- name: Switch to using sudo
   set_fact:
     ansible_become_pass: '{{ ansible_ssh_pass }}'
 
