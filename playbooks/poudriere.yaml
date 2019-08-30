@@ -1,0 +1,7 @@
+---
+- hosts: freebsd-12-zfs
+  become: yes
+  roles:
+    - poudriere
+
+...
