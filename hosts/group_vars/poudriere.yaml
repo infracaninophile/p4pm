@@ -6,30 +6,30 @@ poudriere_conf:
   FREEBSD_HOST: http://ftp.freebsd.org
   RESOLV_CONF: /etc/resolv.conf
   BASEFS: /usr/local/poudriere
-  USE_PORTLINT: yes
-  USE_TMPFS: yes
+  USE_PORTLINT: 'yes'
+  USE_TMPFS: 'yes'
   DISTFILES_CACHE: /usr/ports/distfiles
   SVN_HOST: svn.FreeBSD.org
   CHECK_CHANGED_OPTIONS: verbose
-  CHECK_CHANGED_DEPS: yes
+  CHECK_CHANGED_DEPS: 'yes'
   CCACHE_DIR: /var/cache/ccache
-  CCACHE_DIR_NON_ROOT_SAFE: yes
+  CCACHE_DIR_NON_ROOT_SAFE: 'yes'
   PARALLEL_JOBS: 4
   PREPARE_PARALLEL_JOBS: 4
-  SAVE_WRKDIR: yes
+  SAVE_WRKDIR: 'yes'
   WRKDIR_ARCHIVE_FORMAT: txz
-  NO_PACKAGE_BUILDING: yes
-  ALLOW_MAKE_JOBS: yes
-  URL_BASE: 'https://{{ ansible_fqdn }}/data/
-  ATOMIC_PACKAGE_REPOSITORY: yes
-  COMMIT_PACKAGES_ON_FAILURE: yes
-  KEEP_OLD_PACKAGES: no
+  NO_PACKAGE_BUILDING: 'yes'
+  ALLOW_MAKE_JOBS: 'yes'
+  URL_BASE: 'https://{{ ansible_fqdn }}/data/'
+  ATOMIC_PACKAGE_REPOSITORY: 'yes'
+  COMMIT_PACKAGES_ON_FAILURE: 'yes'
+  KEEP_OLD_PACKAGES: 'no'
   KEEP_OLD_PACKAGES_COUNT: 5
   BUILDER_HOSTNAME: '{{ ansible_fqdn }}'
-  BUILD_AS_NON_ROOT: yes
+  BUILD_AS_NON_ROOT: 'yes'
   PRIORITY_BOOST: '"llvm*"'
-  USE_COLORS: no
-  HTML_TRACK_REMAINING: yes
-  PKG_REPO_SIGNING_KEY: "{{ poudriere_ssl_dir }}/private/poudriere.pem"
+  USE_COLORS: 'no'
+  HTML_TRACK_REMAINING: 'yes'
+  PKG_REPO_SIGNING_KEY: '{{ poudriere_ssl_dir }}/private/poudriere.pem'
 
 ...
