@@ -1,5 +1,7 @@
 ---
 
+ports_tree: /home/matthew/ports
+
 poudriere_conf:
   ZPOOL: zroot
   ZROOTFS: /poudriere
@@ -34,12 +36,12 @@ poudriere_conf:
 
 
 # Use a checkout of the ports tree in our home directory for
-# development work
+# development work -- using the variable from role/ports
 
 poudriere_ports:
   - name: development
     method: none
-    mountpoint: '{{ lookup("env", "HOME") }}/ports'
+    mountpoint: '{{ ports_tree }}'
 
 # Build testing ports -- test on i386 and amd64 each on all currently
 # supported release branches
