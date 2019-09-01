@@ -1,0 +1,14 @@
+---
+
+- name: Ensure git is installed
+  pkgng:
+    name: git
+    state: latest
+
+- name: Checkout ports tree from git
+  become: no
+  git:
+    repo: '{{ ports_git_repo_url }}'
+    dest: '{{ ports_tree }}'
+
+...
