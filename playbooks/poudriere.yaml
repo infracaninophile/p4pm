@@ -2,6 +2,7 @@
 - hosts: poudriere
   become: yes
   roles:
+    - ports
     - poudriere
 
 ...
