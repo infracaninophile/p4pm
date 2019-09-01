@@ -1,0 +1,10 @@
+---
+
+# 'reload' will start the service if not already running.
+- name: enable-reload-nginx
+  service:
+    name: nginx
+    enabled: yes
+    state: reloaded
+
+...

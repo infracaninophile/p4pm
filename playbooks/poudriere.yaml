@@ -4,5 +4,5 @@
   roles:
     - ports
     - poudriere
-
+    - nginx
 ...

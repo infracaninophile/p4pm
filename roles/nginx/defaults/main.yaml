@@ -1,0 +1,12 @@
+---
+
+nginx_config: /usr/local/etc/nginx/nginx.conf
+nginx_server_name: '{{ ansible_fqdn }}'
+
+nginx_ssl_certificate: /usr/local/etc/ssl/crt/poudriere.crt
+nginx_ssl_key: /usr/local/etc/ssl/private/poudriere.pem
+
+nginx_poudriere_webroot: /usr/local/share/poudriere/html
+nginx_poudriere_data_logs: /usr/local/poudriere/data/logs/bulk
+
+...
