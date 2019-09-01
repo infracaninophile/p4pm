@@ -30,15 +30,15 @@ http {
 
     # https://ssl-config.mozilla.org/#server=nginx&server-version=1.17.0&config=modern
     server {
-        listen: 80 default_server;
-        listen: [::]:80 default_server;
+        listen 80 default_server;
+        listen [::]:80 default_server;
     
         return 301 https://$host$request_uri;
     }
     
     server {
-        listen: 443 ssl http2;
-        listen: [::]:443 ssl http2;
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
         server_name: {{ nginx_server_name }};
     
         root {{ nginx_poudriere_webroot }};
