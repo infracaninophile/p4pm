@@ -1,0 +1,17 @@
+---
+
+galaxy_info:
+  role_name: nginx
+  author: Matthew Seaman
+  description: Set up nginx for poudriere
+  license: BSD
+  min_ansible_version: 2.6
+  platforms:
+    - name: FreeBSD
+      versions:
+        - all
+
+dependencies:
+  - { role: sysrc }
+
+...

@@ -5,6 +5,11 @@
     name: nginx
     state: latest
 
+- name: Load the accf_http kernel module
+  kld:
+    name: accf_http
+    boot: true
+
 - name: Set up nginx configuration
   template:
     src: nginx.conf.j2
