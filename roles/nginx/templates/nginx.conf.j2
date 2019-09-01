@@ -39,7 +39,7 @@ http {
     server {
         listen 443 ssl http2;
         listen [::]:443 ssl http2;
-        server_name: {{ nginx_server_name }};
+        server_name {{ nginx_server_name }};
     
         root {{ nginx_poudriere_webroot }};
     
