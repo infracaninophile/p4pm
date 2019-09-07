@@ -3,6 +3,8 @@
   become: yes
   roles:
     - ports
+    - standard_packages
     - poudriere
     - nginx
+    - test_build
 ...
