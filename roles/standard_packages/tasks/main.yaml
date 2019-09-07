@@ -1,0 +1,9 @@
+---
+
+- name: Install standard packages
+  pkgng:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ standard_packages }}"
+
+...
