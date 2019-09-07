@@ -1,4 +1,13 @@
+# Local Customizations for a Poudriere Build System for testing ports
 ---
+
+standard_packages:
+  - tmux
+  - emacs-nox
+  - ca_root_nss
+  - mtr
+  - rsync
+  - arcanist-php73
 
 ports_tree: /home/matthew/ports
 
@@ -67,5 +76,8 @@ poudriere_jails:
     version: 12.0-RELEASE
     arch: i386
     fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/12_0i'
+
+test_build_ports_tree: '{{ poudriere_ports.0.name }}'
+test_build_jails: '{{ poudriere_jails|map(attribute="name")|list }}' 
 
 ...
