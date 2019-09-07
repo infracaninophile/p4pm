@@ -16,4 +16,5 @@ basics_users:
       - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAR6DC2oyHLBqkZ9+lUu1K0h16pDSG54fr1jVBJZ7/Ja matthew@freebsd.org'
     update_password: true
     auth_sudo: true
+
 ...
