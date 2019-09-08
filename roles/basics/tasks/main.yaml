@@ -6,7 +6,7 @@
     ansible_become_flags: '{{ basics_initial_become_flags }}'
 
 - name: Bootstrap pkg(8) using raw mode
-  raw: /usr/sbin/pkg bootstrap
+  raw: /usr/sbin/pkg bootstrap -y
   changed_when: false
 
 - name: Install the initial packages using raw mode
