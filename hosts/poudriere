@@ -1,3 +1,5 @@
 [poudriere]
-freebsd-12-zfs.black-earth.co.uk
+class0.black-earth.co.uk
 
+[poudriere_test]
+freebsd-12-zfs.black-earth.co.uk
