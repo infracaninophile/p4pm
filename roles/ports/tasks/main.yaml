@@ -10,5 +10,6 @@
   git: # noqa 401
     repo: '{{ ports_git_repo_url }}'
     dest: '{{ ports_tree }}'
+    depth: 1
 
 ...
