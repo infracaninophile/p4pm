@@ -13,6 +13,15 @@
   raw: pkg install -y {{ basics_initial_pkgs|join(' ') }}
   changed_when: false
 
+- name: Set hostname
+  hostname:
+    name: '{{ inventory_hostname }}'
+
+- name: Update /etc/rc.conf with the new hostname
+  sysrc:
+    name: hostname
+    value: '{{ inventory_hostname }}'
+
 - name: Configure sudo(8) to allow members of group wheel
   copy:
     src: sudo-wheel
