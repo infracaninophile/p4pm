@@ -4,9 +4,13 @@
 [freebsd:children]
 virtualbox
 azure
+aws
 
 [virtualbox]
 freebsd-12-zfs.black-earth.co.uk
 
 [azure]
 misophist.infracaninophile.co.uk
+
+[aws]
+class0.black-earth.co.uk
