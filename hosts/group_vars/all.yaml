@@ -1,6 +1,11 @@
 ---
 
-# Settings that apply to all hosts
+# Additional shells to install
+#basics_user_shells:
+#  - bash
+#  - zsh
+
+# User accounts to create
 
 basics_users:
   - user: matthew

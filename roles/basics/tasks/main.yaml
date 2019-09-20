@@ -39,6 +39,12 @@
     owner: root
     group: wheel
 
+- name: Install any additional shells needed for user accounts
+  packages:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ basics_user_shells }}'
+
 - name: Create groups for local users
   group:
     name: '{{ item.group }}'

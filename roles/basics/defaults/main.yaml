@@ -16,6 +16,7 @@ basics_pamd_sudo: /usr/local/etc/pam.d/sudo
 
 basics_sudo_authorized_keys: /etc/security/sudo_authorized_keys
 
+basics_user_shells: []
 basics_users: []
 
 ...
