@@ -40,7 +40,7 @@
     group: wheel
 
 - name: Install any additional shells needed for user accounts
-  packages:
+  package:
     name: '{{ item }}'
     state: present
   loop: '{{ basics_user_shells }}'
