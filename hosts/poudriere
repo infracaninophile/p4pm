@@ -1,3 +1,4 @@
 [poudriere]
-class0.black-earth.co.uk
+class0.black-earth.co.uk  ansible_python_interpreter='/usr/local/bin/python'
+
 

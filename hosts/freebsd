@@ -2,15 +2,15 @@
 [freebsd]
 
 [freebsd:children]
-virtualbox
-azure
+#virtualbox
+#azure
 aws
 
-[virtualbox]
-freebsd-12-zfs.black-earth.co.uk
+#[virtualbox]
+#freebsd-12-zfs.black-earth.co.uk
 
-[azure]
-misophist.infracaninophile.co.uk
+#[azure]
+#misophist.infracaninophile.co.uk
 
 [aws]
 class0.black-earth.co.uk
