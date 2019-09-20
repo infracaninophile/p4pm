@@ -2,15 +2,15 @@
 [freebsd]
 
 [freebsd:children]
-#virtualbox
+virtualbox
 #azure
-aws
+#aws
 
-#[virtualbox]
-#freebsd-12-zfs.black-earth.co.uk
+[virtualbox]
+freebsd-12-zfs.black-earth.co.uk ansible_host=192.168.56.3
 
 #[azure]
 #misophist.infracaninophile.co.uk
 
-[aws]
-class0.black-earth.co.uk
+#[aws]
+#class0.black-earth.co.uk
