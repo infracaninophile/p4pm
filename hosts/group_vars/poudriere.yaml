@@ -9,7 +9,7 @@ standard_packages:
   - rsync
   - arcanist-php73
 
-ports_tree: '{{ ansible_env.HOME }}/ports'
+ports_tree: '/home/{{ ansible_env.SUDO_USER }}/ports'
 
 poudriere_conf:
   ZPOOL: zroot
