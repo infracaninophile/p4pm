@@ -1,15 +1,16 @@
-# Local Customizations for a Poudriere Build System for testing ports
+# Local Customizations for a Poudriere Build System for a home network
 ---
 
 standard_packages:
-  - tmux
-  - emacs-nox
   - ca_root_nss
-  - mtr
-  - rsync
-  - arcanist-php73
 
-ports_tree: '/home/{{ ansible_env.SUDO_USER }}/ports'
+#  - tmux
+#  - emacs-nox
+#  - mtr
+#  - rsync
+#  - arcanist-php73
+
+ports_tree: '/usr/ports'
 
 poudriere_conf:
   ZPOOL: zroot
@@ -44,12 +45,12 @@ poudriere_conf:
   PKG_REPO_SIGNING_KEY: '{{ poudriere_ssl_dir }}/private/poudriere.pem'
 
 
-# Use a checkout of the ports tree in our home directory for
-# development work -- using the variable from role/ports
+# Use a checkout of the ports tree in /usr/ports for
+# building -- using the variable from role/ports
 
 poudriere_ports:
-  - name: development
-    method: none
+  - name: default
+    method: git
     mountpoint: '{{ ports_tree }}'
 
 # Build testing ports -- test on i386 and amd64 each on all currently
