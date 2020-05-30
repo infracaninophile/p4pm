@@ -51,32 +51,14 @@ poudriere_conf:
 poudriere_ports:
   - name: default
     method: git
-    mountpoint: '{{ ports_tree }}'
-
-# Build testing ports -- test on i386 and amd64 each on all currently
-# supported release branches
+    mountpoint: '{{ poudriere_basefs }}/ports/default'
 
 poudriere_jails:
-  - name: 11_2a
+  - name: 12_1a
     method: http
-    version: 11.2-RELEASE
+    version: 12.1-RELEASE
     arch: amd64
-    fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/11_2a'
-  - name: 11_2i
-    method: http
-    version: 11.2-RELEASE
-    arch: i386
-    fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/11_2i'
-  - name: 12_0a
-    method: http
-    version: 12.0-RELEASE
-    arch: amd64
-    fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/12_0a'
-  - name: 12_0i
-    method: http
-    version: 12.0-RELEASE
-    arch: i386
-    fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/12_0i'
+    fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/12_1a'
 
 test_build_ports_tree: '{{ poudriere_ports.0.name }}'
 test_build_jails: '{{ poudriere_jails|map(attribute="name")|list }}' 

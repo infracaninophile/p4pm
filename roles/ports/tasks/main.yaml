@@ -6,7 +6,6 @@
     state: latest
 
 - name: Checkout ports tree from git
-  become: no
   git: # noqa 401
     repo: '{{ ports_git_repo_url }}'
     dest: '{{ ports_tree }}'

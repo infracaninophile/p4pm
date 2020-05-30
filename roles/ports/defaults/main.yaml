@@ -1,6 +1,6 @@
 ---
 
 ports_git_repo_url: 'https://github.com/freebsd/freebsd-ports.git'
-ports_tree: '{{ ansible_env.HOME }}/ports'
+ports_tree: '/usr/ports'
 
 ...

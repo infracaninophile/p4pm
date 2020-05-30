@@ -2,7 +2,6 @@
 - hosts: poudriere
   become: yes
   roles:
-    - ports
     - standard_packages
     - poudriere
     - nginx
