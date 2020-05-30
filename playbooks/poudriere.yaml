@@ -5,5 +5,4 @@
     - standard_packages
     - poudriere
     - nginx
-    - test_build
 ...

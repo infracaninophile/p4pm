@@ -1,6 +1,0 @@
----
-
-ports_git_repo_url: 'https://github.com/freebsd/freebsd-ports.git'
-ports_tree: '/usr/ports'
-
-...

@@ -1,7 +1,0 @@
----
-
-test_build_ports_tree: development
-test_build_package_set: development
-test_build_jails: []
-
-...
