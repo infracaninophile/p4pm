@@ -5,11 +5,15 @@
     name: nginx
     state: latest
 
-- name: Load the accf_http kernel module
-  kld:
-    name: accf_http
-    boot: true
-
+# This won't work in jails -- you'll have to load the module from the
+# host system.
+- name: Enable the accf_http kernel module
+  sysrc:
+    name: nginx_http_accept_enable
+    value: "YES"
+  notify:
+    - enable-reload-nginx
+    
 - name: Set up nginx configuration
   template:
     src: nginx.conf.j2
