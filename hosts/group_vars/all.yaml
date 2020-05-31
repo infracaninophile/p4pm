@@ -30,4 +30,8 @@ pkg_enabled_repos:
     enabled: 'yes'
     priority: 1
 
+pkg_repo_pubkeys:
+  - name: mypackages
+    pubkey: "{{ hostvars['freebsd-12-zfs.black-earth.co.uk']['poudriere_pubkey'] }}"
+
 ...

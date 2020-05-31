@@ -1,6 +1,12 @@
 ---
 # Defaults for the pkg configuration
-pkg_repo_dir: '/usr/local/etc/pkg/repos'
+pkg_config_dir: '/usr/local/etc/pkg'
+pkg_repo_dir: '{{ pkg_config_dir}}/repos'
+pkg_repo_pubkeys: []
+
+# - name: infracaninophile
+#   pubkey: "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8..."
+
 pkg_disabled_repos:
   - FreeBSD
 pkg_enabled_repos: []

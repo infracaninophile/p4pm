@@ -32,4 +32,13 @@
     group: wheel
   loop: "{{ pkg_enabled_repos }}"
 
+- name: "Install repository public keys"
+  copy:
+    dest: '{{ pkg_config_dir }}/{{ item.name }}.pem'
+    mode: 0644
+    owner: root
+    group: wheel
+    content: '{{ item.pubkey }}'
+  loop: '{{ pkg_repo_pubkeys }}'
+
 ...
