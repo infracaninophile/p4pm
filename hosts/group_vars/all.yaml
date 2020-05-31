@@ -29,5 +29,5 @@ pkg_enabled_repos:
     pubkey: /usr/local/etc/pkg/mypackages.pem
     enabled: 'yes'
     priority: 1
-    
+
 ...
