@@ -60,7 +60,4 @@ poudriere_jails:
     arch: amd64
     fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/12_1a'
 
-test_build_ports_tree: '{{ poudriere_ports.0.name }}'
-test_build_jails: '{{ poudriere_jails|map(attribute="name")|list }}' 
-
 ...
