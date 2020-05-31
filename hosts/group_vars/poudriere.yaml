@@ -60,4 +60,8 @@ poudriere_jails:
     arch: amd64
     fs: '{{ poudriere_conf.ZPOOL }}{{ poudriere_conf.ZROOTFS }}/jails/12_1a'
 
+poudriere_make_conf:
+  - 'DEFAULT_VERSIONS?=	perl5=5.30 ruby=2.7 python=3.8 python3=3.8 emacs=nox ssl=openssl'
+  - 'OPTIONS_UNSET?=	NLS X11 GSSAPI'
+
 ...
