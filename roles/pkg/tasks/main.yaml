@@ -1,0 +1,35 @@
+---
+# Set up the pkg configuration.  For each setup we have lists of
+# package tags to disable, and lists of pkg configs to enable.
+- name: "Ensure ca_root_nss is installed"
+  package:
+    name: ca_root_nss
+    state: present
+
+- name: "Create pkg configuration directory"
+  file:
+    name: '{{ pkg_repo_dir }}'
+    state: directory
+    mode: 0755
+    owner: root
+    group: wheel
+
+- name: "Disable unwanted pkg repositories"
+  template:
+    dest: '{{ pkg_repo_dir }}/{{ item }}.conf'
+    src: 'templates/pkg_disable.conf.j2'
+    mode: 0644
+    owner: root
+    group: wheel
+  loop: "{{ pkg_disabled_repos }}"
+
+- name: "Enable wanted pkg repositories"
+  template:
+    dest: '{{ pkg_repo_dir }}/{{ item["name"] }}.conf'
+    src: 'templates/pkg_enable.conf.j2'
+    mode: 0644
+    owner: root
+    group: wheel
+  loop: "{{ pkg_enabled_repos }}"
+
+...

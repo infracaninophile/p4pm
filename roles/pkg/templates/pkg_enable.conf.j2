@@ -1,0 +1,7 @@
+{{ item["name"] }}: {
+{% for key in item %}
+{% if key != "name" %}
+  {{ key }}: {{ item[key] }},
+{% endif %}
+{% endfor %}
+}

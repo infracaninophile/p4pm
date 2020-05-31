@@ -1,0 +1,13 @@
+---
+# Defaults for the pkg configuration
+pkg_repo_dir: '/usr/local/etc/pkg/repos'
+pkg_disabled_repos:
+  - FreeBSD
+pkg_enabled_repos: []
+
+#  - name: infracaninophile
+#    url: 'https://pkgrepo.infracaninophile.co.uk/${ABI}'
+#    enabled: 'yes'
+#    priority: 1
+
+...
