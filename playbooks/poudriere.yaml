@@ -5,4 +5,5 @@
     - standard_packages
     - poudriere
     - nginx
+    - pkg
 ...

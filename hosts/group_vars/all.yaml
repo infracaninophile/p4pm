@@ -22,4 +22,12 @@ basics_users:
     update_password: true
     auth_sudo: true
 
+pkg_enabled_repos:
+  - name: mypackages
+    url: 'https://freebsd-12-zfs.black-earth.co.uk/${ABI}'
+    signature_type: pubkey
+    pubkey: /usr/local/etc/pkg/mypackages.pem
+    enabled: 'yes'
+    priority: 1
+    
 ...
