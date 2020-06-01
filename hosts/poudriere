@@ -1,5 +1,5 @@
 [poudriere]
-freebsd-12-ufs.black-earth.co.uk poudriere_use_zfs=false
-#freebsd-12-zfs.black-earth.co.uk
+freebsd-12-zfs.black-earth.co.uk
+#freebsd-12-ufs.black-earth.co.uk poudriere_use_zfs=false
 
 
