@@ -13,8 +13,9 @@ standard_packages:
 ports_tree: '/usr/ports'
 
 poudriere_conf:
-  ZPOOL: zroot
-  ZROOTFS: /poudriere
+  NO_ZFS: '{{ poudriere_use_zfs|bool|ternary("", "yes") }}'
+  ZPOOL: '{{ poudriere_use_zfs|bool|ternary("zroot", "") }}'
+  ZROOTFS: '{{ poudriere_use_zfs|bool|ternary("/poudriere", "") }}'
   FREEBSD_HOST: http://ftp.freebsd.org
   RESOLV_CONF: /etc/resolv.conf
   BASEFS: /usr/local/poudriere
