@@ -24,7 +24,7 @@ basics_users:
 
 pkg_enabled_repos:
   - name: mypackages
-    url: 'https://freebsd-12-zfs.black-earth.co.uk/${ABI}'
+    url: "https://{{ hostvars[groups['poudriere'][0]]['ansible_fqdn']/${ABI}"
     signature_type: pubkey
     pubkey: /usr/local/etc/pkg/mypackages.pem
     enabled: 'yes'
@@ -32,6 +32,6 @@ pkg_enabled_repos:
 
 pkg_repo_pubkeys:
   - name: mypackages
-    pubkey: "{{ hostvars['freebsd-12-zfs.black-earth.co.uk']['poudriere_pubkey'] }}"
+    pubkey: "{{ hostvars[groups['poudriere'][0]]['poudriere_pubkey'] }}"
 
 ...
