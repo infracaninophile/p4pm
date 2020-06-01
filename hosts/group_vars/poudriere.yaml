@@ -64,4 +64,12 @@ poudriere_make_conf:
   - 'DEFAULT_VERSIONS?=	perl5=5.30 ruby=2.7 python=3.8 python3=3.8 emacs=nox ssl=openssl'
   - 'OPTIONS_UNSET?=	NLS X11 GSSAPI'
 
+pkg_enabled_repos:
+  - name: mypackages
+    url: 'file:///usr/local/poudriere/data/packages/12_1a-default'
+    signature_type: pubkey
+    pubkey: /usr/local/etc/pkg/mypackages.pem
+    enabled: 'yes'
+    priority: 1
+
 ...
