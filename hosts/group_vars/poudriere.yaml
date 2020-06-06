@@ -10,8 +10,6 @@ standard_packages:
 #  - rsync
 #  - arcanist-php73
 
-ports_tree: '/usr/ports'
-
 poudriere_conf:
   NO_ZFS: '{{ poudriere_use_zfs|bool|ternary("", "yes") }}'
   ZPOOL: '{{ poudriere_use_zfs|bool|ternary("zroot", "") }}'
